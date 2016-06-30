@@ -31,6 +31,9 @@
 }
 .button {
 }
+.primary_button {
+  color:#FFFFFF;
+}
 .link_button {
   color:#169BD5;
 }
@@ -96,6 +99,8 @@
 }
 .checkbox {
   text-align:left;
+}
+.table_cell {
 }
 .fl_series {
   font-family:'STHeitiSC-Light', 'Heiti SC Light', 'Heiti SC';
@@ -170,4 +175,38 @@
 .flow_shape {
   font-size:13px;
   color:#000000;
+}
+.radio_button {
+  font-family:'', '', 'Roboto';
+  font-size:16px;
+  text-align:left;
+}
+.text_area1 {
+  font-family:'', '', 'Roboto';
+  font-size:16px;
+  color:#000000;
+  text-align:left;
+}
+.droplist {
+  font-family:'', '', 'Roboto';
+  font-size:16px;
+  color:#000000;
+  text-align:left;
+}
+.list_box1 {
+  font-family:'', '', 'Roboto';
+  font-size:16px;
+  color:#000000;
+  text-align:left;
+}
+.checkbox1 {
+  font-family:'', '', 'Roboto';
+  font-size:16px;
+  text-align:left;
+}
+.text_field2 {
+  font-family:'', '', 'Roboto';
+  font-size:16px;
+  color:#000000;
+  text-align:left;
 }
