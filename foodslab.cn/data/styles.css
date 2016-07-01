@@ -10,6 +10,7 @@
 .box_1 {
   font-family:'STHeitiSC-Light', 'Heiti SC Light', 'Heiti SC';
   font-weight:200;
+  font-style:normal;
   font-size:20px;
   color:#FFFFFF;
 }
@@ -40,35 +41,41 @@
 .heading_1 {
   font-family:'ArialMT', 'Arial';
   font-weight:bold;
+  font-style:normal;
   font-size:32px;
   text-align:left;
 }
 .heading_2 {
   font-family:'ArialMT', 'Arial';
   font-weight:bold;
+  font-style:normal;
   font-size:24px;
   text-align:left;
 }
 .heading_3 {
   font-family:'ArialMT', 'Arial';
   font-weight:bold;
+  font-style:normal;
   font-size:18px;
   text-align:left;
 }
 .heading_4 {
   font-family:'ArialMT', 'Arial';
   font-weight:bold;
+  font-style:normal;
   font-size:14px;
   text-align:left;
 }
 .heading_5 {
   font-family:'ArialMT', 'Arial';
   font-weight:bold;
+  font-style:normal;
   text-align:left;
 }
 .heading_6 {
   font-family:'ArialMT', 'Arial';
   font-weight:bold;
+  font-style:normal;
   font-size:10px;
   text-align:left;
 }
@@ -125,7 +132,9 @@
   color:#FFFFFF;
 }
 .shape {
-  font-family:'', '', 'Roboto';
+  font-family:'Roboto';
+  font-weight:400;
+  font-style:normal;
   font-size:16px;
 }
 .image1 {
@@ -177,36 +186,56 @@
   color:#000000;
 }
 .radio_button {
-  font-family:'', '', 'Roboto';
+  font-family:'Roboto';
+  font-weight:400;
+  font-style:normal;
   font-size:16px;
   text-align:left;
 }
 .text_area1 {
-  font-family:'', '', 'Roboto';
+  font-family:'Roboto';
+  font-weight:400;
+  font-style:normal;
   font-size:16px;
   color:#000000;
   text-align:left;
 }
 .droplist {
-  font-family:'', '', 'Roboto';
+  font-family:'Roboto';
+  font-weight:400;
+  font-style:normal;
   font-size:16px;
   color:#000000;
   text-align:left;
 }
 .list_box1 {
-  font-family:'', '', 'Roboto';
+  font-family:'Roboto';
+  font-weight:400;
+  font-style:normal;
   font-size:16px;
   color:#000000;
   text-align:left;
 }
 .checkbox1 {
-  font-family:'', '', 'Roboto';
+  font-family:'Roboto';
+  font-weight:400;
+  font-style:normal;
   font-size:16px;
   text-align:left;
 }
 .text_field2 {
-  font-family:'', '', 'Roboto';
+  font-family:'Roboto';
+  font-weight:400;
+  font-style:normal;
   font-size:16px;
   color:#000000;
+  text-align:left;
+}
+.search {
+  font-family:'STHeitiSC-Light', 'Heiti SC Light', 'Heiti SC';
+  font-weight:200;
+  font-style:normal;
+  font-size:13px;
+  color:#FFFFFF;
   text-align:left;
 }
