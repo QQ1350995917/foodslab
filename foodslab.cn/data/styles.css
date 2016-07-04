@@ -107,7 +107,14 @@
 .checkbox {
   text-align:left;
 }
+.flow_shape {
+}
 .table_cell {
+}
+.menu_item {
+}
+.sticky_1 {
+  text-align:left;
 }
 .fl_series {
   font-family:'STHeitiSC-Light', 'Heiti SC Light', 'Heiti SC';
@@ -181,7 +188,7 @@
   color:#000000;
   text-align:left;
 }
-.flow_shape {
+.flow_shape1 {
   font-size:13px;
   color:#000000;
 }
@@ -228,6 +235,14 @@
   font-weight:400;
   font-style:normal;
   font-size:16px;
+  color:#000000;
+  text-align:left;
+}
+.paragraph1 {
+  font-family:'ArialMT', 'Arial';
+  font-weight:normal;
+  font-style:normal;
+  font-size:13px;
   color:#000000;
   text-align:left;
 }
