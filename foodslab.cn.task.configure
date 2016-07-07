@@ -1,0 +1,5 @@
+# crontab -l显示目前所有的任务
+# crontab -r删除所有的任务
+# crontab -e编辑任务
+# crontab filename
+*	*	*	*	*	sh /Users/dingpengwei/workspace/axure/foodslab/foodslab.cn.sh
