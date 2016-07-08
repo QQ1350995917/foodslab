@@ -32,6 +32,8 @@
 }
 .button {
 }
+.box_11 {
+}
 .primary_button {
   color:#FFFFFF;
 }
@@ -100,6 +102,10 @@
   color:#000000;
   text-align:left;
 }
+.droplist {
+  color:#000000;
+  text-align:left;
+}
 .list_box {
   color:#000000;
   text-align:left;
@@ -107,11 +113,19 @@
 .checkbox {
   text-align:left;
 }
+.radio_button {
+  text-align:left;
+}
+.tree_node {
+  text-align:left;
+}
 .flow_shape {
 }
 .table_cell {
 }
 .menu_item {
+}
+.snapshot {
 }
 .sticky_1 {
   text-align:left;
@@ -192,7 +206,7 @@
   font-size:13px;
   color:#000000;
 }
-.radio_button {
+.radio_button1 {
   font-family:'Roboto';
   font-weight:400;
   font-style:normal;
@@ -207,7 +221,7 @@
   color:#000000;
   text-align:left;
 }
-.droplist {
+.droplist1 {
   font-family:'Roboto';
   font-weight:400;
   font-style:normal;
@@ -245,6 +259,15 @@
   font-size:13px;
   color:#000000;
   text-align:left;
+}
+.icon {
+}
+.table_cell1 {
+  font-family:'ArialMT', 'Arial';
+  font-weight:normal;
+  font-style:normal;
+  font-size:13px;
+  color:#000000;
 }
 .search {
   font-family:'STHeitiSC-Light', 'Heiti SC Light', 'Heiti SC';
