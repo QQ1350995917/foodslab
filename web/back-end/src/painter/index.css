@@ -12,15 +12,17 @@ html{
     color: transparent;
 }
 
-.loginPanel{
-    height: 5.5rem;
+div.loginPanel{
+    height: 8rem;
     width: 18rem;
     padding: 0.3rem;
     margin-top: 30%;
     margin-left: 50%;
+    border: 1px solid #FFFFFF;
 }
 
-.loginPanelItem{
+div.loginPanelItem{
+    display: inline-block;
     margin-top: 1rem;
 }
 
@@ -37,12 +39,14 @@ button,input{
 
 .loginButton {
     height: 1.5rem;
+    width: 13.3rem;
     margin-left: 4.0rem;
 }
 
 .loginButton:hover{
     cursor: pointer;
     border-color: dodgerblue;
+    color: dodgerblue;
 }
 
 
