@@ -9,12 +9,11 @@ function ChartItem(name, lineColor, lineWidth, data) {
     this.data = data;
 }
 
-function Chart(id,year,month,start,end,line,unit,borderColor,borderWidth,color,width,chartItems) {
+function Chart(id, year, start, end, line, unit, borderColor, borderWidth, color, width, chartItems) {
     this.id = id;
     this.year = year; // 年份
-    this.month = month; // 月份
-    this.start = start;// 开始日期
-    this.end = end;// 结束日期
+    this.start = start;// 开始月份
+    this.end = end;// 结束月份
     this.line = line;// X轴标示线条的个数
     this.unit = unit;// 每个X轴标示线条所表示的单位
     this.borderColor = borderColor;
@@ -23,6 +22,43 @@ function Chart(id,year,month,start,end,line,unit,borderColor,borderWidth,color,w
     this.width = width;
     this.chartItems = chartItems;
 };
+
+function NotePoint(x, y, radius) {
+    this.x = x;
+    this.y = y;
+    this.radius = radius;
+}
+
+var eventElements = [];
+
+function onMouseMove(event) {
+    for (var index = 0; index < eventElements.length; index++) {
+        var notePoint = eventElements[index];
+        var xSpace = Math.abs(notePoint.x - (event.x - marginLeft));
+        var ySpace = Math.abs(notePoint.y - (event.y - marginTop));
+        var powSpace = Math.pow(xSpace, 2) + Math.pow(ySpace, 2);
+        var space = Math.sqrt(powSpace);
+        if (space <= notePoint.radius) {
+            document.getElementById("chart").style.cursor = "pointer";
+            break;
+        } else {
+            document.getElementById("chart").style.cursor = "default";
+        }
+    }
+}
+
+function onMouseClick(event) {
+    for (var index = 0; index < eventElements.length; index++) {
+        var notePoint = eventElements[index];
+        var xSpace = Math.abs(notePoint.x - (event.x - marginLeft));
+        var ySpace = Math.abs(notePoint.y - (event.y - marginTop));
+        var powSpace = Math.pow(xSpace, 2) + Math.pow(ySpace, 2);
+        var space = Math.sqrt(powSpace);
+        if (space <= notePoint.radius) {
+            alert("ok");
+        }
+    }
+}
 
 //X轴上的边距
 var xPaddingLeft = 5;
@@ -38,8 +74,15 @@ var yOffset;
 var textXOffset = 5;
 var textYOffset = 7;
 
+var marginTop;
+var marginLeft;
+
 function draw(chart) {
     var chartCanvas = document.getElementById("chart");
+    marginTop = chartCanvas.offsetTop;
+    marginLeft = chartCanvas.offsetLeft;
+    chartCanvas.addEventListener("mousemove", onMouseMove);
+    chartCanvas.addEventListener("click", onMouseClick);
     var context = chartCanvas.getContext("2d");
     context.save();
     context.clearRect(0, 0, chartCanvas.width, chartCanvas.height);
@@ -47,7 +90,7 @@ function draw(chart) {
     drawTable(context, chartCanvas.width, chartCanvas.height, chart);
     var length = chart.chartItems.length;
     for (var index = 0; index < length; index++) {
-        drawChart(context, chartCanvas.width, chartCanvas.height, chart.chartItems[index]);
+        drawChart(context, chartCanvas.width, chartCanvas.height, chart.start, chart.end, chart.chartItems[index]);
     }
     context.restore();
 }
@@ -56,8 +99,12 @@ function draw(chart) {
  * 仅仅显示某条线条
  * @param itemName 显示的线条名称
  */
-function drawItem(chart,itemName) {
+function drawItem(chart, itemName) {
     var chartCanvas = document.getElementById("chart");
+    marginTop = chartCanvas.offsetTop;
+    marginLeft = chartCanvas.offsetLeft;
+    chartCanvas.addEventListener("mousemove", onMouseMove);
+    chartCanvas.addEventListener("click", onMouseClick);
     var context = chartCanvas.getContext("2d");
     context.save();
     context.clearRect(0, 0, chartCanvas.width, chartCanvas.height);
@@ -66,7 +113,7 @@ function drawItem(chart,itemName) {
     var length = chart.chartItems.length;
     for (var index = 0; index < length; index++) {
         if (itemName == chart.chartItems[index].name) {
-            drawChart(context, chartCanvas.width, chartCanvas.height, chart.chartItems[index]);
+            drawChart(context, chartCanvas.width, chartCanvas.height, chart.start, chart.end, chart.chartItems[index]);
             break;
         }
     }
@@ -78,8 +125,12 @@ function drawItem(chart,itemName) {
  * @param itemName 线条名称
  * @param lineWidth 线条宽度
  */
-function drawItemByWidth(chart,itemName, lineWidth) {
+function drawItemByWidth(chart, itemName, lineWidth) {
     var chartCanvas = document.getElementById("chart");
+    marginTop = chartCanvas.offsetTop;
+    marginLeft = chartCanvas.offsetLeft;
+    chartCanvas.addEventListener("mousemove", onMouseMove);
+    chartCanvas.addEventListener("click", onMouseClick);
     var context = chartCanvas.getContext("2d");
     context.save();
     context.clearRect(0, 0, chartCanvas.width, chartCanvas.height);
@@ -90,7 +141,7 @@ function drawItemByWidth(chart,itemName, lineWidth) {
         if (itemName == chart.chartItems[index].name) {
             chart.chartItems[index].lineWidth = lineWidth;
         }
-        drawChart(context, chartCanvas.width, chartCanvas.height, chart.chartItems[index]);
+        drawChart(context, chartCanvas.width, chartCanvas.height, chart.start, chart.end, chart.chartItems[index]);
     }
     context.restore();
 }
@@ -102,20 +153,57 @@ function drawItemByWidth(chart,itemName, lineWidth) {
  * @param height 表格高度
  * @param chartItem 数据源
  */
-function drawChart(context, width, height, chartItem) {
+function drawChart(context, width, height, start, end, chartItem) {
     context.save();
     context.beginPath();
     context.lineCap = "round";
     context.lineWidth = chartItem.lineWidth;
     context.strokeStyle = chartItem.lineColor;
     context.moveTo(xPaddingLeft, height - yPaddingBottom);
-    for (var i = 0; i < chartItem.data.length; i++) {
-        context.lineTo(xOffset * (i + 1) + xPaddingLeft, height - chartItem.data[i] * yOffset - yPaddingBottom);
-        context.moveTo(xOffset * (i + 1) + xPaddingLeft, height - chartItem.data[i] * yOffset - yPaddingBottom);
+    for (var i = start - 1, j = 0; i < end; i++, j++) {
+        var x = xOffset * (i + 1) + xPaddingLeft;
+        var y = height - chartItem.data[j] * yOffset - yPaddingBottom;
+        context.lineTo(x, y);
+        //drawPoint(context,x,y,5);
+        context.moveTo(x, y);
     }
     context.stroke();
+    context.closePath();
+    context.restore();
+
+    context.save();
+    for (var i = start - 1, j = 0; i < end; i++, j++) {
+        var x = xOffset * (i + 1) + xPaddingLeft;
+        var y = height - chartItem.data[j] * yOffset - yPaddingBottom;
+        var radius = Math.min(xOffset, yOffset) / 3;
+        if (chartItem.data[j] == 0) {
+            drawCircle(context, x, y, radius, chartItem.lineColor);
+        } else {
+            drawPoint(context, x, y, radius, chartItem.lineColor);
+        }
+        var note = new NotePoint(x, y, radius);
+        eventElements.push(note);
+    }
     context.restore();
 }
+
+function drawPoint(context, x, y, radius, color) {
+    context.beginPath();
+    context.fillStyle = color;
+    context.arc(x, y, radius, 0 * Math.PI, 2 * Math.PI);
+    context.fill();
+    context.closePath();
+}
+
+function drawCircle(context, x, y, radius, color) {
+    context.beginPath();
+    context.strokeStyle = color;
+    context.arc(x, y, radius, 0 * Math.PI, 2 * Math.PI);
+    context.stroke();
+    context.closePath();
+}
+
+
 /**
  * 绘制数据表格
  * @param context 上下文
@@ -146,9 +234,9 @@ function drawTable(context, width, height, chart) {
 
     // 绘制纵向的数据标示线条
     // 这里标示每月的天数
-    // 假设每个月都是31天
+    // 每个年都是12天
     // 实际绘制按照参数进行
-    var xCounter = 31 + 1; //31条线分割出32个空间
+    var xCounter = 12 + 1; //12条线分割出13个空间
     xOffset = (width - xPaddingLeft - xPaddingRight) / xCounter;
     for (var index = chart.start; index < chart.end + 1; index++) {
         var startX = xPaddingLeft + index * xOffset;
@@ -171,15 +259,15 @@ function drawTable(context, width, height, chart) {
 
     context.beginPath();
     //绘制底部边框的单位
-    context.fillText("号", width - xPaddingRight - xOffset + 2 * textXOffset, height - textYOffset);
+    context.fillText("月", width - xPaddingRight - xOffset + 2 * textXOffset, height - textYOffset);
     context.stroke();
     context.restore();
 
     context.save();
     context.beginPath();
-    context.strokeStyle = '#FF00FF';
+    context.fillStyle = 'red';
     //绘制左边边框的单位
-    context.fillText(chart.unit, textXOffset, yPaddingTop);
+    context.fillText(chart.unit, xPaddingLeft, yPaddingTop);
     context.stroke();
     context.restore();
 }

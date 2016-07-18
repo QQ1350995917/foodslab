@@ -1,0 +1,72 @@
+div.horizontalSelected{
+    float: left;
+    line-height: 40px;
+    text-align: center;
+    color: #666666;
+    font-size: 1rem;
+    background-color: red;
+    border-top: 1px solid;
+    border-top-color: #CCCCCC;
+    border-left: 1px solid;
+    border-left-color: #CCCCCC;
+    background: linear-gradient(to bottom, #999999 0%,#ffffff 100%);
+}
+
+div.horizontalNormal{
+    float: left;
+    line-height: 40px;
+    text-align: center;
+    color: #666666;
+    font-size: 1rem;
+    background-color: #40a070;
+    border: 1px solid;
+    border-color: #CCCCCC;
+    background: linear-gradient(to bottom, #E3E3E3 0%,#ffffff 100%);
+    box-shadow: 1px 2px 1px #999999;
+    cursor: pointer;
+}
+
+div.verticalSelected{
+    line-height: 40px;
+    text-align: center;
+    color: #666666;
+    font-size: 1rem;
+    background-color: red;
+    border-top: 1px solid;
+    border-top-color: #CCCCCC;
+    border-left: 1px solid;
+    border-left-color: #CCCCCC;
+    background: linear-gradient(to bottom, #999999 0%,#ffffff 100%);
+}
+
+
+div.verticalNormal{
+    line-height: 40px;
+    text-align: center;
+    color: #666666;
+    font-size: 1rem;
+
+    background-color: #40a070;
+    border: 1px solid;
+    border-color: #CCCCCC;
+    background: linear-gradient(to bottom, #E3E3E3 0%,#ffffff 100%);
+    cursor: pointer;
+}
+
+div.verticalSelectedArrow{
+    float: right;
+    width:0px;
+    height:0px;
+    border-top: 20px solid transparent;
+    border-right: 30px solid #FFFFFF;
+    border-bottom: 20px solid transparent;
+}
+
+div.verticalNormalArrow{
+    float: right;
+    width:0px;
+    height:0px;
+    border-top: 20px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 20px solid transparent;
+}

@@ -17,21 +17,21 @@
 
     <canvas id="chart" width="1000" height="330" style="background-color: #EDEDED">your browser can not support canvas</canvas>
 </div>
-<script type="text/javascript" src="chart-line.js"></script>
+<script type="text/javascript" src="chart-line-month.js"></script>
 <script type="text/javascript">
     var chartItems = new Array(
             new ChartItem("IP", "#FF00FF", "2", new Array(0, 0, 0, 0, 0, 0, 3, 4, 5, 2, 3, 7, 2, 4, 5, 2, 10, 7, 10, 10, 5, 2, 3, 9, 2, 4, 5, 2, 3, 7, 9)),
-            new ChartItem("VP", "#FF0000", "2", new Array(3, 4, 5, 2, 3, 7, 2, 4, 5, 2, 10, 7, 10, 10, 5, 2, 3, 9, 2, 4, 5, 2, 3, 7, 9, 2, 4, 5, 2, 3, 7)),
+            new ChartItem("VP", "#FF0000", "2", new Array(1, 4, 5, 2, 3, 7, 2, 4, 5, 2, 10, 7, 10, 10, 5, 2, 3, 9, 2, 4, 5, 2, 3, 7, 9, 2, 4, 5, 2, 3, 7)),
             new ChartItem("VV", "#FFFF00", "2", new Array(5, 2, 10, 7, 10, 10, 5, 2, 3, 9, 2, 4, 4, 5, 2, 3, 7, 2, 4, 9, 2, 4, 5, 2, 3, 7, 5, 2, 3, 7, 3)),
             new ChartItem("UV", "#0000FF", "2", new Array(3, 7, 2, 4, 5, 2, 10, 7, 10, 3, 4, 5, 2, 10, 5, 2, 3, 9, 2, 4, 5, 2, 3, 7, 9, 2, 4, 5, 2, 3, 7))
     );
     var id = "this is the id";
     var year = 2016; // 年份
     var month = 5; // 月份
-    var start = 1;// 开始日期
+    var start = 5;// 开始日期
     var end = 31;// 结束日期
     var line = 10;// X轴标示线条的个数
-    var unit = 1;// 每个X轴标示线条所表示的单位
+    var unit = 100;// 每个X轴标示线条所表示的单位
 
     var borderColor = "#000000";
     var borderWidth = 1;
@@ -48,7 +48,7 @@
     function btn_drawItemByWidth(name,lineWidth) {
         var chartItems = new Array(
                 new ChartItem("IP", "#FF00FF", "2", new Array(0, 0, 0, 0, 0, 0, 3, 4, 5, 2, 3, 7, 2, 4, 5, 2, 10, 7, 10, 10, 5, 2, 3, 9, 2, 4, 5, 2, 3, 7, 9)),
-                new ChartItem("VP", "#FF0000", "2", new Array(3, 4, 5, 2, 3, 7, 2, 4, 5, 2, 10, 7, 10, 10, 5, 2, 3, 9, 2, 4, 5, 2, 3, 7, 9, 2, 4, 5, 2, 3, 7)),
+                new ChartItem("VP", "#FF0000", "2", new Array(1, 4, 5, 2, 3, 7, 2, 4, 5, 2, 10, 7, 10, 10, 5, 2, 3, 9, 2, 4, 5, 2, 3, 7, 9, 2, 4, 5, 2, 3, 7)),
                 new ChartItem("VV", "#FFFF00", "2", new Array(5, 2, 10, 7, 10, 10, 5, 2, 3, 9, 2, 4, 4, 5, 2, 3, 7, 2, 4, 9, 2, 4, 5, 2, 3, 7, 5, 2, 3, 7, 3)),
                 new ChartItem("UV", "#0000FF", "2", new Array(3, 7, 2, 4, 5, 2, 10, 7, 10, 3, 4, 5, 2, 10, 5, 2, 3, 9, 2, 4, 5, 2, 3, 7, 9, 2, 4, 5, 2, 3, 7))
         );
