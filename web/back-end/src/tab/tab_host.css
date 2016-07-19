@@ -32,8 +32,6 @@ div.verticalSelected{
     color: #666666;
     font-size: 1rem;
     background-color: red;
-    border-top: 1px solid;
-    border-top-color: #CCCCCC;
     border-left: 1px solid;
     border-left-color: #CCCCCC;
     background: linear-gradient(to bottom, #999999 0%,#ffffff 100%);
@@ -43,13 +41,13 @@ div.verticalSelected{
 div.verticalNormal{
     line-height: 40px;
     text-align: center;
-    color: #666666;
+    color: #FFFFFF;
     font-size: 1rem;
 
     background-color: #40a070;
-    border: 1px solid;
+    border-bottom: 1px solid #66666E;
     border-color: #CCCCCC;
-    background: linear-gradient(to bottom, #E3E3E3 0%,#ffffff 100%);
+    background: #66666E;
     cursor: pointer;
 }
 

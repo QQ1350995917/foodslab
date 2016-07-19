@@ -70,57 +70,55 @@ CircleProgress.prototype.rotate = function (interval) {
 function showLoadingView() {
     var mask = document.createElement('div');
     mask.id = "mask";
-    mask.style.backgroundColor = "#999999";
+    mask.style.position = "absolute";
+    mask.style.top = getScrollTop() + "px";
+    mask.style.backgroundColor = "#CCCCCC";
     mask.style.width = "100%";
     mask.style.height = "100%";
     mask.style.left = "0px";
-    mask.style.top = "0px";
-    mask.style.position = "absolute";
     mask.style.zIndex = "10";
     mask.style.opacity = "0.6";
     document.body.appendChild(mask);
 
     var canvas = document.createElement('canvas');
     canvas.id = "canvas";
-    canvas.style.backgroundColor = "#00FFFFFF";
-    canvas.style.width = document.body.clientWidth / 5 + "px";
-    canvas.style.height = document.body.clientHeight / 5 + "px";
-    canvas.style.left = 2 * document.body.clientWidth / 5 + "px";
-    canvas.style.top = document.body.clientHeight / 5 + "px";
-    canvas.style.zIndex = "10";
     canvas.style.position = "absolute";
+    canvas.style.top = getScrollTop() + 100 + "px";
+    canvas.style.backgroundColor = "#00FF0000";
+    canvas.style.left = document.body.clientWidth / 2 - 200 + "px";
+    canvas.style.width = "400px";
+    canvas.style.height = "200px";
+
+    canvas.style.zIndex = "10";
+
     canvas.style.opacity = "0.9";
     document.body.appendChild(canvas);
 
 
-    var button = document.createElement('button');
-    button.id = "button";
-    button.style.styleFloat = "left";
-    button.innerHTML = "close";
-    button.style.width = document.body.clientWidth / 5 + "px";
-    button.style.height = "100px";
-    button.style.left = 2 * document.body.clientWidth / 5 + "px";
-    button.style.top = 2 * document.body.clientHeight / 5 + "px";
-    button.style.zIndex = "10";
-    button.style.position = "absolute";
-    button.style.backgroundColor = "red";
-    button.style.opacity = "0.9";
-    button.style.cursor = "pointer";
-    button.addEventListener("click", dismissLoadingView);
-    document.body.appendChild(button);
+    // var button = document.createElement('button');
+    // button.id = "button";
+    // button.innerHTML = "close";
+    // button.style.position = "absolute";
+    // button.style.top = getScrollTop() + 50 + 200 + "px";
+    // button.style.backgroundColor = "#FF0000";
+    // button.style.left = 2 * document.body.clientWidth / 8 + "px";
+    // button.style.width = document.body.clientWidth / 2 + "px";
+    // button.style.height = "100px";
+    // button.style.zIndex = "10";
+    // button.style.backgroundColor = "red";
+    // button.style.opacity = "0.9";
+    // button.style.cursor = "pointer";
+    // button.addEventListener("click", dismissLoadingView);
+    // document.body.appendChild(button);
 
     document.documentElement.style.overflow = 'hidden';
 
-    clearInterval(CircleProgress.prototype.task);
     var progress = new CircleProgress('canvas');
     progress.rotate(30);
-
-    // document.onkeydown = onkeydown;
 
     document.oncontextmenu = new Function("event.returnValue=false;");
     document.onselectstart = new Function("event.returnValue=false;");
     window.onhelp = new Function("event.returnValue=false;"); //屏蔽F1帮助
-
 
     document.onkeydown = function () {
         if (window.event && window.event.keyCode == 13) {
@@ -135,11 +133,25 @@ function showLoadingView() {
  */
 function dismissLoadingView() {
     document.onkeydown = null;
-    document.body.removeChild(document.getElementById('button'));
-    document.body.removeChild(document.getElementById('mask'));
-    document.body.removeChild(document.getElementById('canvas'));
     document.documentElement.style.overflow = 'scroll';
     clearInterval(CircleProgress.prototype.task);
     document.oncontextmenu = new Function("event.returnValue=true;");
     document.onselectstart = new Function("event.returnValue=true;");
+    document.body.removeChild(document.getElementById('mask'));
+    document.body.removeChild(document.getElementById('canvas'));
+    document.body.removeChild(document.getElementById('button'));
+}
+
+function getScrollTop() {
+    var scrollPos;
+    if (window.pageYOffset) {
+        scrollPos = window.pageYOffset;
+    }
+    else if (document.compatMode && document.compatMode != 'BackCompat') {
+        scrollPos = document.documentElement.scrollTop;
+    }
+    else if (document.body) {
+        scrollPos = document.body.scrollTop;
+    }
+    return scrollPos;
 }

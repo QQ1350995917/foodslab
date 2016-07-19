@@ -103,5 +103,7 @@ function onTabItemClick() {
     if (this.childNodes.length > 1){
         this.childNodes[1].className = this.childNodes[1].selectedClassName;
     }
+
+    new Toast('body',null,null,null,40).show(this.childNodes[0].data);
     
 }

@@ -20,7 +20,7 @@ function Toast(id, startX, startY, width, height, className) {
     this.className = className;
     this.opacity = 1;
     this.step = 0.01;
-    this.duration = 30; // 在3000s内完成上述两个值的设定, 3000s / 30 === 1 / 0.01
+    this.duration = 10;
 }
 
 /**
@@ -78,16 +78,21 @@ Toast.prototype.show = function (message) {
 
     var opacity = this.opacity;
     var step = this.step;
-    var task = setInterval(function () {
-        console.log(step);
-        if (opacity < 0) {
-            clearInterval(task);
-            dismiss();
-        } else {
-            toastView.style.opacity = opacity;
-        }
-        opacity -= step;
-    }, this.duration);
+    var timer = setTimeout(function () {
+        var task = setInterval(function () {
+            console.log(step);
+            if (opacity < 0) {
+                clearInterval(task);
+                dismiss();
+            } else {
+                console.log("----");
+                toastView.style.opacity = opacity;
+            }
+            opacity -= step;
+        }, this.duration);
+        clearTimeout(timer);
+    },1000);
+
 }
 
 /**
