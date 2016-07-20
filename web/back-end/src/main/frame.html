@@ -9,8 +9,11 @@
 <body id="body">
 <div id="header" class="header">
     <div id="header_icon" class="header_icon" onclick="frame_OnIconClick()">foodslab.cn</div>
+    <div id="header_menu" class="header_menu"></div>
+    <div id="header_user" class="header_user"><label style="float:left;"> 用户名用户名 </label><label href="#" style="cursor: pointer;" onclick="new Toast('body',null,null,200,30).show('退出')">退出</label></div>
 </div>
 <div id="leftMenu" class="leftMenu"></div>
+<div id="mainTitle" class="mainTitle"></div>
 <div id="main" class="main">
     <p style="margin:0px; font-size:12px;line-height:160%;"><span>朝代：</span>唐代</p>
     <p style="margin:0px; font-size:12px;line-height:160%;"><span>作者：</span><a href="#" target="_blank">王勃</a> | <a href="#" target="_blank">王勃</a> | <a href="#" target="_blank">王勃</a> | <a href="#" target="_blank">王勃</a></p>
@@ -30,12 +33,14 @@
 <script type="text/javascript" src="frame.js"></script>
 
 <script type="text/javascript">
-    window.onload = showLoadingView();
-    var task = setTimeout(function () {
-        console.log("ok");
-        dismissLoadingView();
-        clearTimeout(task);
-    },3000);
-    window.onload = initVerticalTabHostView('leftMenu',getVerticalTabItems());
+//    window.onload = showLoadingView();
+//    var task = setTimeout(function () {
+//        console.log("ok");
+//        dismissLoadingView();
+//        clearTimeout(task);
+//    },3000);
+    window.onload = initVerticalTabHostView('header_menu',getHorizontalIndexTabItems(),100,true);
+    window.onload = initVerticalTabHostView('leftMenu',getVerticalTabItems(),true);
+window.onload = initVerticalTabHostView('mainTitle',getHorizontalTabItems());
 </script>
 </html>

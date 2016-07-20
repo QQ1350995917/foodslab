@@ -9,7 +9,10 @@ div.horizontalSelected{
     border-top-color: #CCCCCC;
     border-left: 1px solid;
     border-left-color: #CCCCCC;
+    border-right: 1px solid;
+    border-right-color: #CCCCCC;
     background: linear-gradient(to bottom, #999999 0%,#ffffff 100%);
+    pointer-events: none;
 }
 
 div.horizontalNormal{
@@ -24,6 +27,7 @@ div.horizontalNormal{
     background: linear-gradient(to bottom, #E3E3E3 0%,#ffffff 100%);
     box-shadow: 1px 2px 1px #999999;
     cursor: pointer;
+    pointer-events: all;
 }
 
 div.verticalSelected{
@@ -35,6 +39,7 @@ div.verticalSelected{
     border-left: 1px solid;
     border-left-color: #CCCCCC;
     background: linear-gradient(to bottom, #999999 0%,#ffffff 100%);
+    pointer-events: none;
 }
 
 
@@ -49,6 +54,7 @@ div.verticalNormal{
     border-color: #CCCCCC;
     background: #66666E;
     cursor: pointer;
+    pointer-events: all;
 }
 
 div.verticalSelectedArrow{
@@ -67,4 +73,32 @@ div.verticalNormalArrow{
     border-top: 20px solid transparent;
     border-right: 30px solid transparent;
     border-bottom: 20px solid transparent;
+}
+
+div.horizontalIndexSelect{
+    float: left;
+    line-height: 35px;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #ffffff;
+    border-top: 0px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #FFFFFF;
+    border-left: 5px solid transparent;
+    pointer-events: none;
+}
+
+
+div.horizontalIndexNormal{
+    float: left;
+    line-height: 35px;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #D8D8D8;
+    border-top: 0px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid transparent;
+    cursor: pointer;
+    pointer-events: all;
 }

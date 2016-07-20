@@ -47,6 +47,9 @@ Toast.prototype.show = function (message) {
     }
     if (!isNull(this.width)) {
         width = this.width;
+        if (isNull(this.startX)){
+            startX = this.view.clientWidth / 2 - width / 2;
+        }
     }
     if (!isNull(this.height)) {
         height = this.height;
@@ -80,12 +83,10 @@ Toast.prototype.show = function (message) {
     var step = this.step;
     var timer = setTimeout(function () {
         var task = setInterval(function () {
-            console.log(step);
             if (opacity < 0) {
                 clearInterval(task);
                 dismiss();
             } else {
-                console.log("----");
                 toastView.style.opacity = opacity;
             }
             opacity -= step;
@@ -99,7 +100,6 @@ Toast.prototype.show = function (message) {
  * 移出Toast对象
  */
 function dismiss() {
-    console.log("remove")
     document.body.removeChild(document.getElementById("toastView"));
 }
 
