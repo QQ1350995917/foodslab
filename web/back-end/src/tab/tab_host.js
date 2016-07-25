@@ -43,8 +43,8 @@ function addExclusiveId(exclusiveId) {
  */
 function initHorizontalTabHostView(id, tabItems, width,isExclusive) {
     var tabHost = document.getElementById(id);
-    var tabWidth = parseInt(tabHost.style.width);
-    var tabHeight = parseInt(tabHost.style.height);
+    var tabWidth = parseInt(tabHost.clientWidth);
+    var tabHeight = parseInt(tabHost.clientHeight);
     var tabSize = tabItems.length;
     var tabItemWidth = (tabWidth - ((tabSize - 1) * 3)) / tabSize;
     if (width != null) {
@@ -72,8 +72,8 @@ function initHorizontalTabHostView(id, tabItems, width,isExclusive) {
  */
 function initVerticalTabHostView(id, tabItems,isExclusive) {
     var tabHost = document.getElementById(id);
-    var tabWidth = parseInt(tabHost.style.width);
-    var tabHeight = parseInt(tabHost.style.height);
+    var tabWidth = parseInt(tabHost.clientWidth);
+    var tabHeight = parseInt(tabHost.clientHeight);
     var tabSize = tabItems.length;
     var tabItemHeight = tabHeight / tabSize;
 
